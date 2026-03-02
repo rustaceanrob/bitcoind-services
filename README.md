@@ -11,3 +11,9 @@ Build a barchart grouping on network and services
 ```shell
 cargo run --release
 ```
+
+Filter on peers with compact block filters
+
+```shell
+cargo run --release compact_filters
+```
