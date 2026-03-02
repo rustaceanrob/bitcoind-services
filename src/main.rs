@@ -35,7 +35,7 @@ fn print_bar_chart(groups: &BTreeMap<(String, ServiceFlags), usize>) {
     // Find longest label for alignment
     let labels: Vec<String> = groups
         .keys()
-        .map(|(net, svc)| format!("{} / svc={}", net, svc))
+        .map(|(net, svc)| format!("{} / flags={}", net, svc))
         .collect();
     let max_label_len = labels.iter().map(|l| l.len()).max().unwrap_or(0);
 
@@ -49,7 +49,7 @@ fn print_bar_chart(groups: &BTreeMap<(String, ServiceFlags), usize>) {
     println!("{}", "-".repeat(max_label_len + 5 + max_bar_width + 5));
 
     for ((net, svc), count) in groups {
-        let label = format!("{} / svc={}", net, svc.to_string().replace("ServiceFlags", ""));
+        let label = format!("{} / flags={}", net, svc.to_string().replace("ServiceFlags", ""));
         let bar_len = (*count as f64 / max_count as f64 * max_bar_width as f64).ceil() as usize;
         let bar = "█".repeat(bar_len);
 
